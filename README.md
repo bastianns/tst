@@ -1,142 +1,102 @@
-# Flask API with Authentication and Sentiment Analysis
+# Panduan Akses API di Berbagai Terminal
 
-A robust Flask API providing public and secure endpoints with API key authentication and sentiment analysis capabilities. Deployed on Vercel.
+## API Keys
+- Bob: `bob_api_key_value`
+- Alice: `alice_api_key_value`
 
-## Table of Contents
-
-- [Overview](#overview)
-- [Features](#features)
-- [Endpoints](#endpoints)
-- [Authentication](#authentication)
-- [Getting Started](#getting-started)
-- [API Documentation](#api-documentation)
-- [Requirements](#requirements)
-- [Deployment](#deployment)
-- [License](#license)
-
-## Overview
-
-This Flask API provides a scalable architecture for handling both public and authenticated requests, along with sentiment analysis capabilities. The application is optimized for Vercel deployment and includes comprehensive security measures.
-
-## Features
-
-- Public and secure endpoint access
-- API key authentication
-- Sentiment analysis simulation
-- Vercel deployment support
-- Comprehensive documentation
-- Easy-to-use endpoints
-
-## Endpoints
+## Command Prompt (CMD)
 
 ### 1. Public Endpoint
-
-- **URL**: `/public`
-- **Method**: `GET`
-- **Authentication**: Not required
-- **Description**: Returns a general message accessible to everyone
-- **Example Response**:
-  ```json
-  {
-      "message": "This is a public route accessible without authentication."
-  }
-  ```
-
-### 2. Secure Endpoints
-
-#### Protected Route
-- **URL**: `/secure`
-- **Method**: `GET`
-- **Authentication**: API Key required
-- **Headers**: `X-API-Key: your_api_key`
-
-#### Sentiment Analysis
-- **URL**: `/secure/get_sentiment_user`
-- **Method**: `POST`
-- **Authentication**: API Key required
-- **Headers**: `X-API-Key: your_api_key`
-
-## Authentication
-
-The API uses API key authentication for secure endpoints. Keys should be included in the request header:
-```
-X-API-Key: your_api_key
+```cmd
+curl https://tst-swart-six.vercel.app/public
 ```
 
-## Getting Started
+### 2. Secure Endpoint
+Menggunakan API Key Bob:
+```cmd
+curl -H "X-API-Key: bob_api_key_value" https://tst-swart-six.vercel.app/secure
+```
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/yourusername/flask-api.git
-   ```
+Menggunakan API Key Alice:
+```cmd
+curl -H "X-API-Key: alice_api_key_value" https://tst-swart-six.vercel.app/secure
+```
 
-2. Install dependencies:
-   ```bash
-   pip install -r requirements.txt
-   ```
+### 3. Sentiment Endpoint
+Menggunakan API Key Bob:
+```cmd
+curl -H "X-API-Key: bob_api_key_value" https://tst-swart-six.vercel.app/secure/get_sentimen_user
+```
 
-3. Set up environment variables:
-   ```bash
-   cp .env.example .env
-   # Edit .env with your settings
-   ```
+Menggunakan API Key Alice:
+```cmd
+curl -H "X-API-Key: alice_api_key_value" https://tst-swart-six.vercel.app/secure/get_sentimen_user
+```
 
-4. Run the development server:
-   ```bash
-   flask run
-   ```
+## PowerShell
 
-## API Documentation
+### 1. Public Endpoint
+```powershell
+Invoke-RestMethod -Uri "https://tst-swart-six.vercel.app/public"
+```
 
-Detailed API documentation is available at `/docs` when running the server locally. For the deployed version, visit the documentation URL provided in your deployment settings.
+### 2. Secure Endpoint
+Menggunakan API Key Bob:
+```powershell
+Invoke-RestMethod -Uri "https://tst-swart-six.vercel.app/secure" -Headers @{"X-API-Key" = "bob_api_key_value"}
+```
 
-## Requirements
+Menggunakan API Key Alice:
+```powershell
+Invoke-RestMethod -Uri "https://tst-swart-six.vercel.app/secure" -Headers @{"X-API-Key" = "alice_api_key_value"}
+```
 
-- Python 3.8+
-- Flask
-- Flask-Cors
-- python-dotenv
-- Additional dependencies listed in `requirements.txt`
+### 3. Sentiment Endpoint
+Menggunakan API Key Bob:
+```powershell
+Invoke-RestMethod -Uri "https://tst-swart-six.vercel.app/secure/get_sentimen_user" `
+                  -Method GET `
+                  -Headers @{"X-API-Key" = "bob_api_key_value"}
+```
 
-## Deployment
+Menggunakan API Key Alice:
+```powershell
+Invoke-RestMethod -Uri "https://tst-swart-six.vercel.app/secure/get_sentimen_user" `
+                  -Method GET `
+                  -Headers @{"X-API-Key" = "alice_api_key_value"}
+```
 
-This API is configured for deployment on Vercel. Follow these steps to deploy:
+## Terminal Mac/Linux
 
-1. Install Vercel CLI:
-   ```bash
-   npm i -g vercel
-   ```
+### 1. Public Endpoint
+```bash
+curl https://tst-swart-six.vercel.app/public
+```
 
-2. Configure your Vercel project:
-   ```bash
-   vercel init
-   ```
+### 2. Secure Endpoint
+Menggunakan API Key Bob:
+```bash
+curl -H "X-API-Key: bob_api_key_value" https://tst-swart-six.vercel.app/secure
+```
 
-3. Deploy:
-   ```bash
-   vercel deploy
-   ```
+Menggunakan API Key Alice:
+```bash
+curl -H "X-API-Key: alice_api_key_value" https://tst-swart-six.vercel.app/secure
+```
 
-## License
+### 3. Sentiment Endpoint
+Menggunakan API Key Bob:
+```bash
+curl -H "X-API-Key: bob_api_key_value" https://tst-swart-six.vercel.app/secure/get_sentimen_user
+```
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+Menggunakan API Key Alice:
+```bash
+curl -H "X-API-Key: alice_api_key_value" https://tst-swart-six.vercel.app/secure/get_sentimen_user
+```
 
----
-
-## Contributing
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-## Support
-
-For support, please open an issue in the GitHub repository or contact the maintainers.
-
-## Acknowledgments
-
-- Flask framework and its contributors
-- Vercel for hosting
-- All contributors to this project
+## Catatan Penting
+1. Untuk CMD dan Terminal Mac, gunakan curl
+2. Untuk PowerShell, gunakan Invoke-RestMethod
+3. API Key wajib disertakan untuk endpoint secure dan sentiment
+4. Endpoint public dapat diakses tanpa API Key
