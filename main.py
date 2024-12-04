@@ -1,9 +1,14 @@
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, redirect, url_for
 from auth import require_api_key
 from db import check_api_key, get_user_from_api_key
 
 # Initialize Flask app
 app = Flask(__name__)
+
+# Root Route - Redirects to Public Route
+@app.route("/")
+def root():
+    return redirect(url_for('public_route'))
 
 # Public Route
 @app.route("/public", methods=["GET"])
